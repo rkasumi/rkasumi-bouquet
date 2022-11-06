@@ -1,0 +1,43 @@
+{
+    "name": "rkasumi-bouquet",
+    "title": "rkasumi's Bouquet",
+    "description": "",
+    "version": "0.0.2",
+    "authors": [
+        {
+            "name": "rkasumi",
+            "email": "rkasumi@example.com",
+            "url": ""
+        }
+    ],
+    "socket": true,
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        },
+        {
+            "lang": "ja",
+            "name": "Japanese",
+            "path": "lang/ja.json"
+        }
+    ],
+    "scripts": [
+        "./scripts/main.js"
+    ],
+    "relationships": {
+        "systems": [
+            {"id": "dnd5e", "type": "system"}
+        ],
+        "requires": [
+            {"id": "socketlib", "type": "module"}
+        ]
+    },
+    "packs": [],
+    "compatibility": {
+        "minimum": 10,
+        "verified": 10,
+        "maximum": 11
+    }
+}
