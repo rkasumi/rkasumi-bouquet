@@ -31,7 +31,7 @@ Hooks.once("socketlib.ready", () => {
 class Bouquet {
   static async update(tid, bouquet) {
     const actor = game.actors.get(tid)
-    await actor.update({"data.bouquet": bouquet})
+    await actor.update({"flags.bouquet": bouquet})
   }
 
   static distribute() {
@@ -76,7 +76,7 @@ class BouquetDialog extends Dialog {
     let actors = []
     for (let a of this.actor) {
       var actor = game.actors.get(a._id)
-      var bouquet = a.data.bouquet
+      var bouquet = a.flags.bouquet
       actors.push({id: a._id, image: actor.img, name: a.name, bouquet: bouquet})
     }
 
@@ -105,7 +105,8 @@ class BouquetDialog extends Dialog {
     const target = $(event.currentTarget)
     const tid = target.parent().parent()[0].dataset.id
     const actor = game.actors.get(target.parent().parent()[0].dataset.id)
-    const bouquet = actor.data.data.bouquet + 1
+    //const bouquet = actor.data.data.bouquet + 1
+    const bouquet = actor.flags.bouquet + 1
     await bouquetSocket.executeAsGM("updateBouquet", tid, bouquet)
   }
 
@@ -113,7 +114,8 @@ class BouquetDialog extends Dialog {
     const target = $(event.currentTarget)
     const tid = target.parent().parent()[0].dataset.id
     const actor = game.actors.get(tid)
-    const bouquet = actor.data.data.bouquet + target.data('add')
+    //const bouquet = actor.data.data.bouquet + target.data('add')
+    const bouquet = actor.flags.bouquet + target.data('add')
     if (bouquet >= 0) {
       await bouquetSocket.executeAsGM("updateBouquet", tid, bouquet)
     } else {
